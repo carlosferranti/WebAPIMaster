@@ -7,6 +7,6 @@ dotnet ef migrations add InitialCreate
 * Criando um banco de dados e o schema
 dotnet ef database update
 
-# Referência
-------------
+# Referência sobre token JWT
+-------------------------------
 https://www.youtube.com/watch?v=EmonymV_Jx0
