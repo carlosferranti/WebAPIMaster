@@ -1,4 +1,4 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.EntityFrameworkCore;
 using WebAPIMaster.Data;
 using WebAPIMaster.Models;
 
@@ -12,7 +12,7 @@ namespace WebAPIMaster.Repositories.Interfaces
         {
             _dbContext = tarefasDBContext;
         }
-        public async Task<UsuarioModel> BuscarPoId(int id)
+        public async Task<UsuarioModel> BuscarPorId(int id)
         {
             return await _dbContext.Usuarios.FirstOrDefaultAsync(x => x.Id == id);
         }
@@ -32,7 +32,7 @@ namespace WebAPIMaster.Repositories.Interfaces
 
         public async Task<UsuarioModel> Atualizar(UsuarioModel usuario, int id)
         {
-            UsuarioModel usuarioPorId = await BuscarPoId(id);
+            UsuarioModel usuarioPorId = await BuscarPorId(id);
 
             if (usuarioPorId == null)
             {
@@ -50,7 +50,7 @@ namespace WebAPIMaster.Repositories.Interfaces
 
         public async Task<bool> Apagar(int id)
         {
-            UsuarioModel usuarioPorId = await BuscarPoId(id);
+            UsuarioModel usuarioPorId = await BuscarPorId(id);
 
             if (usuarioPorId == null)
             {

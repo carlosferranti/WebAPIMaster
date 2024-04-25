@@ -1,0 +1,5 @@
+* Em Package Manager Console digitar: - Criando a migracao
+dotnet ef migrations add InitialCreate
+
+* Criando um banco de dados e o schema
+dotnet ef database update

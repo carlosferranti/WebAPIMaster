@@ -6,15 +6,13 @@ namespace WebAPIMaster.Data
 {
     public class TarefasDBContext : DbContext
     {
-
         public TarefasDBContext(DbContextOptions<TarefasDBContext> options)
-            : base(options)
-        {
-
+        : base(options)
+        { 
         }
 
         public DbSet<UsuarioModel> Usuarios { get; set; }
-        public DbSet<UsuarioModel> TarefasModel { get; set; }
+        public DbSet<TarefaModel> Tarefas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
