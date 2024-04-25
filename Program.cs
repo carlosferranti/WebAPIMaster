@@ -18,11 +18,11 @@ namespace WebAPIMaster
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddEntityFrameworkSqlServer()
-                .AddDbContext<TarefasDBContext>(
+                .AddDbContext<UsuariosDBContext>(
                 options => options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
 
+            builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
             builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-
 
             var app = builder.Build();
 

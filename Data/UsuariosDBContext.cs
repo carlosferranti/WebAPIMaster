@@ -4,9 +4,9 @@ using WebAPIMaster.Models;
 
 namespace WebAPIMaster.Data
 {
-    public class TarefasDBContext : DbContext
+    public class UsuariosDBContext : DbContext
     {
-        public TarefasDBContext(DbContextOptions<TarefasDBContext> options)
+        public UsuariosDBContext(DbContextOptions<UsuariosDBContext> options)
         : base(options)
         { 
         }

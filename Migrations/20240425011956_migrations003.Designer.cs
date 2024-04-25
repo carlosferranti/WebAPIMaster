@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPIMaster.Data;
 
@@ -10,9 +11,10 @@ using WebAPIMaster.Data;
 namespace WebAPIMaster.Migrations
 {
     [DbContext(typeof(UsuariosDBContext))]
-    partial class TarefasDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240425011956_migrations003")]
+    partial class migrations003
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,7 +45,7 @@ namespace WebAPIMaster.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tarefas");
+                    b.ToTable("tb_Tarefas");
                 });
 
             modelBuilder.Entity("WebAPIMaster.Models.UsuarioModel", b =>
@@ -65,7 +67,7 @@ namespace WebAPIMaster.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("tb_Usuarios");
                 });
 #pragma warning restore 612, 618
         }

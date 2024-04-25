@@ -6,11 +6,11 @@ namespace WebAPIMaster.Repositories.Interfaces
 {
     public class UsuarioRepository : IUsuarioRepository
     {
-        private readonly TarefasDBContext _dbContext;
+        private readonly UsuariosDBContext _dbContext;
 
-        public UsuarioRepository(TarefasDBContext tarefasDBContext)
+        public UsuarioRepository(UsuariosDBContext usuariosDBContext)
         {
-            _dbContext = tarefasDBContext;
+            _dbContext = usuariosDBContext;
         }
         public async Task<UsuarioModel> BuscarPorId(int id)
         {
