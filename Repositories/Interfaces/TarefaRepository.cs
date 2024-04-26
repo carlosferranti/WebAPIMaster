@@ -15,13 +15,19 @@ namespace WebAPIMaster.Repositories.Interfaces
         public async Task<TarefaModel> BuscarPorId(int id)
         {
             return await _dbContext.Tarefas.FirstOrDefaultAsync(x => x.Id == id);
-        }
+        }    
+        public async Task<TarefaModel?> BuscarPorNome(string nome)
+        {
+            var tarefa = await _dbContext.Tarefas
+                .Where(x => EF.Functions.Like(x.Nome, "%" + nome + "%"))
+                .FirstOrDefaultAsync();
 
+            return tarefa; // Este retorno pode ser nulo se nenhuma tarefa for encontrada.
+        }
         public async Task<List<TarefaModel>> BuscarTodasTarefas()
         {
             return await _dbContext.Tarefas.ToListAsync();
         }
-
         public async Task<TarefaModel> Adicionar(TarefaModel tarefa)
         {
             await _dbContext.Tarefas.AddAsync(tarefa);
@@ -29,7 +35,6 @@ namespace WebAPIMaster.Repositories.Interfaces
 
             return tarefa;
         }
-
         public async Task<TarefaModel> Atualizar(TarefaModel tarefa, int id)
         {
             TarefaModel tarefaPorId = await BuscarPorId(id);
@@ -48,7 +53,6 @@ namespace WebAPIMaster.Repositories.Interfaces
 
             return tarefaPorId;
         }
-
         public async Task<bool> Apagar(int id)
         {
             TarefaModel tarefaPorId = await BuscarPorId(id);
@@ -62,6 +66,5 @@ namespace WebAPIMaster.Repositories.Interfaces
 
             return true;
         }
-
     }
 }

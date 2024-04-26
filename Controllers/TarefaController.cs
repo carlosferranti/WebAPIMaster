@@ -29,13 +29,24 @@ namespace WebAPIMaster.Controllers
             return Ok(tarefas);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<TarefaModel>> BuscarPorId(int id)
         {
             if (!int.TryParse(id.ToString(), out int parsedId))
                 return BadRequest("O ID fornecido não é válido.");
 
             TarefaModel tarefa = await _tarefaRepository.BuscarPorId(parsedId);
+
+            if (tarefa == null)
+                return NotFound("A tarefa não foi encontrada.");
+
+            return Ok(tarefa);
+        }
+
+        [HttpGet("{nome}")]
+        public async Task<ActionResult<TarefaModel>> BuscarPorNome(string nome)
+        {
+            TarefaModel tarefa = await _tarefaRepository.BuscarPorNome(nome);
 
             if (tarefa == null)
                 return NotFound("A tarefa não foi encontrada.");
